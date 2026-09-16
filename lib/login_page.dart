@@ -10,6 +10,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   TextEditingController txtUsername = TextEditingController();
+  TextEditingController txtPassword = TextEditingController();
+  String statusLogin = "";
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +29,29 @@ class _LoginPageState extends State<LoginPage> {
           ),
           Container(
             margin: EdgeInsets.all(10),
-            child: TextField(
-              obscureText: true,
-              decoration: InputDecoration(hint: Text("input password")),
+            child: MyTextfield(
+              myHint: "input password",
+              txtController: txtPassword,
+              radius: 10,
             ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    String username = txtUsername.text.toString();
+                    String password = txtPassword.text.toString();
+                    if (username == "admin" && password == "admin") {
+                      print("sukses login");
+                      statusLogin = "sukses login admin";
+                    } else {
+                      print("gagal login");
+                      statusLogin = "gagal login admin";
+                    }
+                  });
+                },
                 child: Text(
                   "Login",
                   style: TextStyle(
@@ -49,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(onPressed: () {}, child: Text("Register")),
             ],
           ),
+          Text("status login : " + statusLogin, style: TextStyle(fontSize: 30)),
         ],
       ),
     );
