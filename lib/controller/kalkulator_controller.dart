@@ -7,6 +7,11 @@ class KalkulatorController extends GetxController {
   void tambah(double angka1, double angka2) {
     double hasilTambah = angka1 + angka2;
     hasilHitung.value = hasilTambah;
+    Get.snackbar(
+      "hasil jumlah",
+      "${hasilTambah.toString()}",
+      snackPosition: SnackPosition.BOTTOM,
+    );
   }
 
   void kurang(double angka1, double angka2) {
