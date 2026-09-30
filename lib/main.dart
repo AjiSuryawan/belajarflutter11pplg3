@@ -1,5 +1,6 @@
 import 'package:belajarflutter11pplg3/kalkulator_page.dart';
 import 'package:belajarflutter11pplg3/login_page.dart';
+import 'package:belajarflutter11pplg3/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(home: KalkulatorPage());
+    return GetMaterialApp(
+      title: "Belajar Flutter PPLG 3",
+      initialRoute: Routes.registration,
+      getPages: Routes.myPages,
+    );
   }
 }
