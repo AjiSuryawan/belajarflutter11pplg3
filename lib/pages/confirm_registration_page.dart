@@ -17,6 +17,12 @@ class ConfirmRegistrationPage extends StatelessWidget {
             style: TextStyle(fontSize: 20, color: Colors.green),
           ),
           // others data jenis kelamin, alamat dll
+          ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text("oke"),
+          ),
         ],
       ),
     );
