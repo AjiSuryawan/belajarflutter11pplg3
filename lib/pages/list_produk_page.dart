@@ -18,10 +18,16 @@ class ListProdukPage extends StatelessWidget {
           itemCount: controller.listProduk.length,
           itemBuilder: (context, index) {
             final produk = controller.listProduk[index];
-            return ListTile(
-              title: Text(produk.namaProduk),
-              subtitle: Text(produk.harga),
-              leading: Icon(Icons.arrow_forward),
+            return InkWell(
+              onTap: () {
+                // move to detail page
+                // get.to dan arguments
+              },
+              child: ListTile(
+                title: Text(produk.namaProduk),
+                subtitle: Text(produk.harga),
+                trailing: Icon(Icons.arrow_forward),
+              ),
             );
           },
         ),
