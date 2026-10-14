@@ -14,22 +14,35 @@ class ListProdukPage extends StatelessWidget {
       appBar: AppBar(title: Text("My Products")),
       body: Container(
         margin: EdgeInsets.all(10),
-        child: ListView.builder(
-          itemCount: controller.listProduk.length,
-          itemBuilder: (context, index) {
-            final produk = controller.listProduk[index];
-            return InkWell(
-              onTap: () {
-                // move to detail page
-                // get.to dan arguments
-              },
-              child: ListTile(
-                title: Text(produk.namaProduk),
-                subtitle: Text(produk.harga),
-                trailing: Icon(Icons.arrow_forward),
-              ),
-            );
-          },
+        child: Obx(
+          () => ListView.builder(
+            itemCount: controller.listProduk.length,
+            itemBuilder: (context, index) {
+              final produk = controller.listProduk[index];
+              return Dismissible(
+                key: ValueKey(produk.namaProduk),
+                direction: DismissDirection.startToEnd,
+                background: Container(
+                  color: Colors.red,
+                  alignment: Alignment.centerLeft,
+                  padding: const EdgeInsets.only(left: 20),
+                  child: const Icon(Icons.delete, color: Colors.white),
+                ),
+
+                child: InkWell(
+                  onTap: () {
+                    // move to detail page
+                    // get.to dan arguments
+                  },
+                  child: ListTile(
+                    title: Text(produk.namaProduk),
+                    subtitle: Text(produk.harga),
+                    trailing: Icon(Icons.arrow_forward),
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       ),
     );
